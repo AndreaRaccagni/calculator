@@ -1,4 +1,24 @@
-* ::after ::before {
-  background-color: pink;
-  color: indigo;
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Quicksand&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Creepster', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: #eb5e28;
+  color: #252422;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#title {
+  font-size: 56px;
+  text-align: center;
 }
