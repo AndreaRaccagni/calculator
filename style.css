@@ -18,154 +18,99 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-  background-color: #eb5e28;
+  background-image: url('https://images.unsplash.com/photo-1633177059960-489d8822eafc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #252422;
+  letter-spacing: 2px;
 }
 
-#title {
+.title {
+  padding-top: 18px;
   font-size: 56px;
   text-align: center;
 }
 
-#display {
-  grid-area: display;
-  height: 70px;
-  text-align: right;
-  padding: 8px 8px;
-  font-size: 2em;
+.calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  color: #252422;
+  border: 2px;
+  border-style: solid;
+  border-color: #403d39;
+  font-size: 1.5em;
 }
 
-button.clear {
-  grid-area: clear;
-  background-color: #403d39;
-  border: 2px solid #252422;
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.display {
+  width: 100%;
+  height: 80px;
+  text-align: right;
+  padding: 12px 8px;
+  font-size: 2em;
+  background-color: #fbc442;
+  background-image: url('./images/display.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  color: #252422;
+  border: 2px solid #403d39;
 }
 
 button {
   width: 70px;
   height: 70px;
   font-size: 30px;
-  color: #eb5e28;
+  color: #fbc442;
   background-color: #252422;
   border: 2px solid #403d39;
+  transition: background-color 0.75s ease;
 }
 
-button.root {
-  grid-area: root;
+button:hover {
+  cursor: pointer;
+  background-color: #8a0303;
 }
 
-button.pow {
-  grid-area: pow;
+button.clear {
+  background-color: #403d39;
+  border: 2px solid #403d39;
+  transition: font-size 0.75s ease;
 }
 
-button.add {
-  grid-area: add;
-}
-
-button.multiply {
-  grid-area: multiply;
-}
-
-button.subtract {
-  grid-area: subtract;
-}
-
-button.divide {
-  grid-area: divide;
-}
-
-button.digit0 {
-  grid-area: digit0;
-}
-
-button.digit1 {
-  grid-area: digit1;
-}
-
-button.digit2 {
-  grid-area: digit2;
-}
-
-button.digit3 {
-  grid-area: digit3;
-}
-
-button.digit4 {
-  grid-area: digit4;
-}
-
-button.digit5 {
-  grid-area: digit5;
-}
-
-button.digit6 {
-  grid-area: digit6;
-}
-
-button.digit7 {
-  grid-area: digit7;
-}
-
-button.digit8 {
-  grid-area: digit8;
-}
-
-button.digit9 {
-  grid-area: digit9;
-}
-
-button.dot {
-  grid-area: dot;
+button.clear:hover {
+  font-size: 1.65em;
 }
 
 button.equals {
-  grid-area: equals;
-  width: 100%;
-
+  font-size: 1.65em;
   color: #403d39;
-  background-color: #ccc5b9;
+  background-color: #fbc442;
+  width: 140px;
   border: 2px solid #403d39;
-  background-color: #ccc5b9;
+  transition: background-color 0.75s ease, font-size 0.75s ease;
 }
 
-.calculator {
-  display: grid;
-  grid-template-areas:
-    'display display display display'
-    'clear root pow add'
-    'digit7 digit8 digit9 multiply'
-    'digit4 digit5 digit6 subtract'
-    'digit1 digit2 digit3 divide'
-    'dot digit0 equals equals';
-  color: #252422;
-  border: 2px;
-  border-style: solid;
-  border-color: #252422;
-  padding: 0.5px;
-  gap: 2px;
-  font-size: 1.5em;
-}
-
-.grid-item {
-  color: #eb5e28;
-  background-color: #252422;
-  border: 1px solid #eb5e28;
-  padding: 20px 30px;
-  font-size: 30px;
-  text-align: center;
-}
-
-.dark-gray-button {
-  color: #fffcf2;
-  background-color: #403d39;
+button.equals:hover {
+  background-color: #ffdd94;
+  font-size: 2em;
 }
 
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 0;
+  padding: 12px 0;
   width: 100%;
+  font-size: 1.5em;
   background-color: #252422;
-  color: #eb5e28;
+  color: #fbc442;
 }
