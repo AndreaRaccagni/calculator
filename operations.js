@@ -12,7 +12,7 @@ const multiply = (a, b) => {
 
 const divide = (a, b) => {
   if (b === 0) {
-    throw new Error("Error. Can't divide by 0");
+    return 'E';
   }
   return a / b;
 };
@@ -23,4 +23,13 @@ const square = (a) => {
 
 const squareRoot = (a) => {
   return Math.squareRoot(a);
+};
+
+export default {
+  add,
+  subtract,
+  multiply,
+  divide,
+  square,
+  squareRoot,
 };

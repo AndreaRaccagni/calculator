@@ -18,8 +18,8 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-  background-image: url('https://images.unsplash.com/photo-1633177059960-489d8822eafc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80');
-  background-position: center;
+  background-image: url('./images/background.jpg');
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   color: #252422;
@@ -27,6 +27,7 @@ body {
 }
 
 .title {
+  color: #fbc442;
   padding-top: 18px;
   font-size: 56px;
   text-align: center;
@@ -113,4 +114,10 @@ footer {
   font-size: 1.5em;
   background-color: #252422;
   color: #fbc442;
+}
+
+.link {
+  color: #fffcf2;
+  text-decoration: none;
+  padding: 0 6px;
 }
