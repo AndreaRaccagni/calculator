@@ -24,6 +24,9 @@ const buttons = {
   dot: document.querySelector('.dot'),
   equals: document.querySelector('.equals'),
 };
+const soundOn = document.getElementById('soundOn');
+const soundOff = document.getElementById('soundOff');
+const audioElement = document.getElementById('audioElement');
 
 // variables
 const DISPLAY_LENGTH = 11;
@@ -64,6 +67,14 @@ const addKeyEvent = (keyToCheck, funcToExecute) => {
   });
 };
 
+const playAudio = () => {
+  audioElement.play();
+};
+
+const pauseAudio = () => {
+  audioElement.pause();
+};
+
 // Event listeners
 buttons.clear.addEventListener('click', clearDisplay);
 addKeyEvent('Escape', clearDisplay);
@@ -87,4 +98,16 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
     updateNumber(digitKeyPressed);
   }
+});
+
+soundOn.addEventListener('click', () => {
+  soundOn.classList.remove('active');
+  soundOff.classList.add('active');
+  pauseAudio();
+});
+
+soundOff.addEventListener('click', () => {
+  soundOn.classList.add('active');
+  soundOff.classList.remove('active');
+  playAudio();
 });

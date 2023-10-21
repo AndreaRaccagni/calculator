@@ -7,8 +7,24 @@
     <link rel="stylesheet" href="./style.css" />
     <script type="module" src="./main.js" defer></script>
   </head>
-  <header><h1 class="title">🦇 Halloween calculator ⚰️</h1></header>
+
   <body>
+    <header>
+      <h1 class="title">🦇 Halloween calculator ⚰️</h1>
+      <span class="audio_icon"
+        ><img
+          src="./assets/images/audioOn.svg"
+          alt="sound on"
+          id="soundOn"
+          class="audioIcon" />
+        <img
+          src="./assets/images/audioOff.svg"
+          alt="sound off"
+          id="soundOff"
+          class="audioIcon active"
+      /></span>
+      <audio id="audioElement" src="./assets/audio/audio.wav" loop></audio>
+    </header>
     <div class="calculator">
       <div class="display">0</div>
       <div class="row">
@@ -41,14 +57,18 @@
         <button class="equals">=</button>
       </div>
     </div>
+    <footer>
+      Made with 🍭 by
+      <span
+        ><a
+          href="https://github.com/AndreaRaccagni"
+          target="_blank"
+          class="link"
+        >
+          Andrea
+        </a></span
+      >
+      🧛🏻‍♂️ - The odin project 2023
+    </footer>
   </body>
-  <footer>
-    Made with 🍭 by
-    <span
-      ><a href="https://github.com/AndreaRaccagni" target="_blank" class="link">
-        Andrea
-      </a></span
-    >
-    🧛🏻‍♂️ - The odin project 2023
-  </footer>
 </html>
