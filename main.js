@@ -1,5 +1,4 @@
-// import * as ops from './../calculator/operations';
-// console.log(ops);
+import operations from './operations.js';
 
 // Selectors
 const display = document.querySelector('.display');
@@ -9,7 +8,7 @@ const buttons = {
   subtract: document.querySelector('.subtract'),
   multiply: document.querySelector('.multiply'),
   divide: document.querySelector('.divide'),
-  pow: document.querySelector('.pow'),
+  square: document.querySelector('.square'),
   root: document.querySelector('.root'),
   digit0: document.querySelector('.digit0'),
   digit1: document.querySelector('.digit1'),
@@ -98,6 +97,32 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
     updateNumber(digitKeyPressed);
   }
+});
+
+buttons.add.addEventListener('click', (event) => {
+  operations.add();
+});
+
+buttons.subtract.addEventListener('click', (event) => {
+  operations.subtract();
+});
+
+buttons.multiply.addEventListener('click', (event) => {
+  operations.multiply();
+});
+
+buttons.divide.addEventListener('click', (event) => {
+  operations.divide();
+});
+
+buttons.square.addEventListener('click', () => {
+  number = operations.square(number);
+  display.textContent = number;
+});
+
+buttons.root.addEventListener('click', () => {
+  number = operations.squareRoot(number);
+  display.textContent = number;
 });
 
 soundOn.addEventListener('click', () => {

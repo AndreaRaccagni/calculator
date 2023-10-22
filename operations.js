@@ -22,7 +22,7 @@ const square = (a) => {
 };
 
 const squareRoot = (a) => {
-  return Math.squareRoot(a);
+  return Math.sqrt(a);
 };
 
 export default {
