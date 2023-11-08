@@ -33,8 +33,13 @@ header {
 
 .audioIcon {
   display: none;
-  width: 2em;
-  height: auto;
+  width: auto;
+  height: 1.5em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-bottom: 16px;
+  margin-left: 30px;
 }
 
 .audioIcon:hover {

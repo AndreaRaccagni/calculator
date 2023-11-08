@@ -3,6 +3,7 @@
 This isn the [calculator project](https://www.theodinproject.com/lessons/foundations-calculator), part of [The Odin Project](https://www.theodinproject.com/)
 
 ### Color palette
+
 - orange: #eb5e28
 - black: #252422
 - dark-gray: #403d39
@@ -10,6 +11,7 @@ This isn the [calculator project](https://www.theodinproject.com/lessons/foundat
 - red: #8a0303
 
 ### Assets
+
 - Background: https://www.bhmpics.com/
 - Audio track: https://freesound.org/s/588571/
 - Audio icons: https://fontawesome.com/
