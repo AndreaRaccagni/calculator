@@ -17,4 +17,4 @@ This isn the [calculator project](https://www.theodinproject.com/lessons/foundat
 - Audio icons: https://fontawesome.com/
 - Favicons: https://icons8.com/icons/set/halloween
 
-Thanks for the awesome assets 🙏🏻
+Thanks everybody for the awesome assets 🙏🏻
