@@ -1,4 +1,4 @@
-import operations from './operations.js';
+import ops from './operations.js';
 
 // Selectors
 const display = document.querySelector('.display');
@@ -30,24 +30,86 @@ const audioElement = document.getElementById('audioElement');
 // variables
 const DISPLAY_LENGTH = 11;
 let number = display.textContent;
+let storedNumber = '0';
+let storedOperation = '';
+let justCalculated = false; // Tracks whether the last action was a calculation
 
 // Functions
 const updateNumber = (digit) => {
-  if (number === '0') {
+  if (justCalculated || number === '0') {
     number = digit;
+    justCalculated = false;
   } else {
-    number += digit;
-  }
-
-  if (number.length > DISPLAY_LENGTH) {
-    return;
+    number = (number + digit).slice(0, DISPLAY_LENGTH);
   }
 
   display.textContent = number;
 };
 
+const executeOperation = () => {
+  if (!storedOperation) return;
+
+  const parsedNumber = parseFloat(number);
+  let result;
+
+  switch (storedOperation) {
+    case 'add':
+      result = ops.add(parseFloat(storedNumber), parsedNumber);
+      break;
+    case 'sub':
+      result = ops.subtract(parseFloat(storedNumber), parsedNumber);
+      break;
+    case 'mul':
+      result = ops.multiply(parseFloat(storedNumber), parsedNumber);
+      break;
+    case 'div':
+      result = ops.divide(parseFloat(storedNumber), parsedNumber);
+      break;
+    case 'square':
+      result = ops.square(parsedNumber);
+      break;
+    case 'root':
+      result = ops.squareRoot(parsedNumber);
+      break;
+  }
+
+  if (result === 'E') {
+    display.textContent = 'Error';
+    justCalculated = true;
+  } else {
+    number = result.toString().slice(0, DISPLAY_LENGTH);
+    display.textContent = number;
+    justCalculated = true;
+  }
+
+  storedNumber = '0';
+  storedOperation = '';
+};
+
+const handleOperation = (operation) => {
+  if (!justCalculated && storedOperation && number !== '0') {
+    executeOperation();
+  }
+
+  storedNumber = number;
+  number = '0';
+  storedOperation = operation;
+  justCalculated = false;
+};
+
+buttons.equals.addEventListener('click', () => {
+  executeOperation();
+});
+
 const clearDisplay = () => {
   number = '0';
+  storedNumber = '0';
+  storedOperation = '';
+  display.textContent = number;
+};
+
+const deleteLastDigit = () => {
+  number = number.slice(0, number.length - 1) || '0';
   display.textContent = number;
 };
 
@@ -75,6 +137,8 @@ const pauseAudio = () => {
 };
 
 // Event listeners
+addKeyEvent('Backspace', deleteLastDigit);
+
 buttons.clear.addEventListener('click', clearDisplay);
 addKeyEvent('Escape', clearDisplay);
 
@@ -89,40 +153,39 @@ for (const button in buttons) {
   }
 }
 
-document.addEventListener('keydown', (event) => {
-  const digitKeyPressed = event.key;
-  const digitButton = `digit${digitKeyPressed}`;
-
-  if (buttons[digitButton]) {
-    event.preventDefault();
-    updateNumber(digitKeyPressed);
+buttons.equals.addEventListener('click', () => {
+  if (storedOperation && number !== '0') {
+    executeOperation();
+    storedNumber = number;
+    storedOperation = '';
+    number = '0';
   }
 });
 
-buttons.add.addEventListener('click', (event) => {
-  operations.add();
+buttons.add.addEventListener('click', () => {
+  handleOperation('add');
 });
 
-buttons.subtract.addEventListener('click', (event) => {
-  operations.subtract();
+buttons.subtract.addEventListener('click', () => {
+  handleOperation('sub');
 });
 
-buttons.multiply.addEventListener('click', (event) => {
-  operations.multiply();
+buttons.multiply.addEventListener('click', () => {
+  handleOperation('mul');
 });
 
-buttons.divide.addEventListener('click', (event) => {
-  operations.divide();
+buttons.divide.addEventListener('click', () => {
+  handleOperation('div');
 });
 
 buttons.square.addEventListener('click', () => {
-  number = operations.square(number);
-  display.textContent = number;
+  storedOperation = 'square';
+  executeOperation();
 });
 
 buttons.root.addEventListener('click', () => {
-  number = operations.squareRoot(number);
-  display.textContent = number;
+  storedOperation = 'root';
+  executeOperation();
 });
 
 soundOn.addEventListener('click', () => {
@@ -135,4 +198,42 @@ soundOff.addEventListener('click', () => {
   soundOn.classList.add('active');
   soundOff.classList.remove('active');
   playAudio();
+});
+
+document.addEventListener('keydown', (event) => {
+  const digitKeyPressed = event.key;
+  const digitButton = `digit${digitKeyPressed}`;
+
+  if (buttons[digitButton]) {
+    event.preventDefault();
+    updateNumber(digitKeyPressed);
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  switch (event.key) {
+    case '+':
+      event.preventDefault();
+      handleOperation('add');
+      break;
+    case '-':
+      event.preventDefault();
+      handleOperation('sub');
+      break;
+    case '*':
+      event.preventDefault();
+      handleOperation('mul');
+      break;
+    case '/':
+      event.preventDefault();
+      handleOperation('div');
+      break;
+    case '=':
+    case 'Enter':
+      event.preventDefault();
+      if (storedOperation && number !== '0') {
+        buttons.equals.click();
+      }
+      break;
+  }
 });
