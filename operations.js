@@ -18,10 +18,13 @@ const divide = (a, b) => {
 };
 
 const square = (a) => {
-  return Math.pow(a, 2);
+  return a ** 2;
 };
 
 const squareRoot = (a) => {
+  if (a < 0) {
+    return 'E';
+  }
   return Math.sqrt(a);
 };
 
